@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.boxes {
+    height: 100px;
+    width: 100px;
+    background-color: #453188;
+    margin: 10px;
+}
+
+.boxes-two {
+    height: 100px;
+    width: 100px;
+    background-color: #888716;
+    margin: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

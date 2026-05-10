@@ -1,0 +1,122 @@
+Ez lehet hosszúnak tűnik elsőre, de ne aggódj, az érdek közös! :)
+
+A cél, hogy a képeknek (images mappa) megfelelően egy webshop böngésző- és rendelés leadó oldalt közösen építsünk fel.
+
+1. feladat: böngésző felület HTML template felépítése, formázása
+Használj szemantikus elemeket!
+    - Első lépésként hozzuk létre az oldal 2 főbb elemét (fejléc - header, lábléc - footer)
+    - Fejlécben helyezzünk el egy h1-es címsort, a szöveg lehet tetszőleges.
+    - Láblécben majdnem ugyanez, csak h2-es címsort használjunk.
+    - Formázzuk meg őket! Kössünk be a HTML fájlunkba egy css fájlt.
+    - Mivel header-ből és footer-ből csak 1-1 van, ezért nyugodtan lehet
+      element selectort használnunk
+    - Header formázása:
+        - Minimum magasság: 100px
+        - Háttérszíne: #262322
+        - Rendezzük középre a szöveget (varázslat, tényleg):
+            - display: flex
+            - align-items: center
+            - justify-content: center
+        - Eddig jók vagyunk, már csak a szövegnek kell olvashatóbbnak lennie.
+        - Mivel újra használható kódot szeretnénk, ezért hozzunk létre egy "ligth-text" class-t
+            - Neki annyi lesz a dolga, hogy a betűszínt beállítsa a következőre: #eecece
+            - Ezt a class-t adjuk meg a HTML-ben a h1-es címsorunknak.
+    - Footer formázása:
+        - Ugyanaz, mint a header, kivéve a minimum magasság, itt: 80px
+        - Illetve a footerben levő címsornak is meg kell adnunk a "light-text" class-t
+
+Ezzel ezt a 2 elemet be is fejeztük, csak így tovább! :)
+
+2. feladat: tartalmi (main) részhez tartozó HTML template felépítése
+    - Elsőnek mindenképp kelleni fog a main elem
+    - Ezen belül lesz egy "körbeölelő" dobozunk (section) és ebben fogjuk elhelyezni a képeken is látható kártyákat (article)
+    - Section elemre helyezd el a következő class-t: "content-wrapper"
+    - Tipp: Először próbálj meg egy kártyát közel tökéletesre megcsinálni, csak utána kezdj el copy-paste kombóval sokszorosítani :)
+    - Tehát, legózzunk össze egy terméket:
+        - az article elem lesz, ami magát a kártyát körbefogja, tegyünk rá egy class-t is: "content-box"
+        - vessünk egy pillantást az egyik képre... (images mappa)
+        - 3 elkülöníthető elemből épül fel a kártya: egy kép, némi szöveg és egy gomb
+        - hozzunk létre egy "div"-et ami körbefogja a képünket és a rajta levő szöveget
+            - ezen belül legyen egy "img" tag, és egy h3-as címsor
+            - helyezzük el a "div"-en a következő class-t: "img-holder"
+            - képcímeket használj, nem kell letölteni (ingyenes képek: 'https://unsplash.com/', 'https://www.pexels.com/')
+        - "div" alatt lesz egy "p" elemünk, ebben lesz a leírás, lehet tetszőleges szöveg
+        - utolsónak pedig hozz létre még egy "div" elemet és lásd el "btn-holder" class-al
+            - ebben lesz a gombunk (button), és azon belül pedig egy "a" elem, szövege: "order"
+                - erre azért van szükség, mert egyelőre nem javascript kóddal szeretnénk az aloldalra navigálni
+                - "a" elemre helyezd el a "light-text" class-t
+
+(Böngészőben nyugodtan megnézheted a munkádat, de ne ijedj meg :D )
+
+3. feladat: játsszunk a CSS-el!
+    - Mivel a "main" elem fogja körbe a tartalmunkat, ennek a formázásával kezdünk:
+        - legyen 10px-es belső behúzása (padding)
+        - rendezzük középre a tartalmat, varázslattal:
+            - display: flex
+            - align-items: center
+            - justify-content: center
+        - opcionális:
+            - adjunk meg háttérképet (background-image: url("<képcím helye>") )
+            - background-size: cover
+            - background-repeat: no-repeat
+    - Korábban csak hivatkoztunk ezekre a classokra a HTML-ben, most hozzuk létre őket a CSS fájlban:
+        - content-wrapper
+        - content-box
+        - img-holder
+        - btn-holder
+    - .content-wrapper tulajdonságok:
+        - max szélesség: 450px
+        - szintén középre rendezős varázslatot alkalmazz, egyetlen kiegészítéssel:
+            - oszlopba rendeződjenek az elemek: flex-direction: column
+    - .content-box:
+        - használja ki a teljes szélességet
+        - minimum magassága: 450px
+        - margin: 0.5rem
+        - keret / szegély: 1px solid black
+        - háttérszín: #C97D60
+    - .img-holder:
+        - pozíció: relatív
+        - belső behúzás (padding): 10px
+        - maximum magasság: 200px
+    - Most pedig az "img-holder"-en belüli képet és címsort formázzuk:
+    - .img-holder img:
+        - rendelkézesre álló szélességet használja ki
+        - rendelkézesre álló magasságot használja ki
+        - max magasság: 190px
+        - object-fit: cover (így nem fog kilógni a kép)
+    - .img-holder h3:
+        - pozíció: abszolút
+        - felső pozi (top): 50%
+        - balról (left): 50%
+        - pozícióval középre igazítós varázslat:
+            - transform: translate(-50%, -50%)
+        - betűméret: 3rem
+        - rendelkézesre álló szélességet használja ki
+        - középre rendezett szöveg (text-align: center)
+
+Ezzel a kép kész is van, már nincs sok hátra!
+
+    - Kép alatti szövegünk formázása:
+    - .content-box p:
+        - szöveg sorkizártan rendezve (text-align: justify)
+        - belső behúzás: 10px
+    - Gombot tartalmazó dobozunk:
+    - .btn-holder:
+        - középre rendezős varázslat (display: flex...)
+        - margin felette-alatta: 1rem
+    - Gomb formázás:
+    - .btn-holder button:
+        - szélesség: 100px
+        - magasság: 30px
+        - él-rádiusz (border-radius): 5px
+        - keret ne legyen (border: none)
+        - háttérszín: #2A2C24
+    - Opcionális: ha a gombon van a kurzor változzon meg a háttérszín: #2f0d0d (tipp: hover)
+    - .btn-holder button a:
+        - text-decoration: none (nem lesz csúnya aláhúzott)
+    - Opcionális: hozz létre egy "dark-text" class-t, betűszín: #212020
+        - Attól függően, hogy milyen a képnek a színvilága amit az "img" tagnek megadsz,
+          alatta a h3-as elemedre helyezd el a "light-text" vagy "dark-text" class-t, így is olvashatóbbá téve a felületet
+
+
+ Mélylevegő... mobil nézettel kész is vagyunk, szép munka! :)

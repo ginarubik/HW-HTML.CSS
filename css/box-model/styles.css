@@ -1,0 +1,39 @@
+*, html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+section {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: grey;
+    border: 2px solid black;
+    color: white;
+    font-size: 20px;
+}
+
+p {
+    background: #c4b8b8;
+}
+
+.first-box {
+    margin: 30px;
+}
+
+.second-box {
+    padding: 50px;
+}
+
+.third-box {
+    margin: 10px;
+    border: 15px solid blue;
+}

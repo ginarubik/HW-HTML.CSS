@@ -1,0 +1,14 @@
+/* colors
+navbar #a7ffeb
+main #84ffff
+sidebar #18ffff
+content1 #6fffd2
+content2 #64ffda
+content3 #73ffba
+footer #1de9b6   */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
