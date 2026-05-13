@@ -1,0 +1,103 @@
+HTML Leírás
+
+A személyes portfólió weboldalam HTML szerkezete.
+A weboldal célja Gina bemutatása, hobbijainak és heti programjának megjelenítése, valamint kapcsolatfelvételi lehetőség:
+Hero / nyitó rész
+Navigáció
+Rólam szekció
+Hobbik
+Heti program
+Kedvenc linkek
+Kapcsolat
+Lábléc
+
+A nyitó rész tartalmazza:
+ háttér elemeket
+profilképet
+domain nevet
+főcímet
+rövid bemutatkozó szöveget
+
+```html
+<h1 id="heroName"></h1>
+```
+```html
+<img src="YOUR_IMAGE.jpg" alt="Gina Rubik">
+```
+
+A navigációs menü anchor linkeket használ.
+
+```html
+<a href="#rolam">Rólam</a>
+```
+Ez a `rolam` azonosítójú szekcióhoz ugrik.
+
+```html
+<section id="rolam">
+```
+bemutatkozás
+rövid személyes leírás
+idézet
+
+```html
+<section id="hobbik">
+```
+A hobbi elemek külön blokkokban jelennek meg.
+
+```html
+<div>
+  <span>🎵</span>
+  <div>Zene</div>
+</div>
+```
+
+```html
+<section id="program">
+```
+
+```html
+<table>
+```
+A heti program táblázatos formában jelenik meg.
+
+| Oszlop      | Leírás       |
+| ----------- | ------------ |
+| Nap         | A hét napjai |
+| Tevékenység | Napi program |
+
+
+```html
+<section id="linkek">
+```
+
+```html
+<a href="https://www.reddit.com" target="_blank">
+```
+
+A `target="_blank"` új lapon nyitja meg a linket.
+
+
+```html
+<section id="kapcsolat">
+```
+Az oldal kapcsolatfelvételi formot tartalmaz:
+név, emmail,üzenet és küldés mezőket
+
+```html
+<input type="email" placeholder="email@example.com">
+``
+
+A menüpontok az adott szekció `id` értékére hivatkoznak.
+
+```html
+<a href="#kapcsolat">Kapcsolat</a>
+```
+
+A képek jelenleg helyőrző fájlnévvel szerepelnek.
+
+```html
+src="YOUR_IMAGE.jpg"
+```
+Ezt a saját képfájl nevére kell cserélni.
+
+
