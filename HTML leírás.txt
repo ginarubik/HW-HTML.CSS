@@ -2,7 +2,18 @@ HTML Leírás
 
 A személyes portfólió woldalam HTML szerkezete.
 A weboldal célja magam bemutatása, hobbijaimnak és heti programjaimnak megjelenítése, valamint kapcsolatfelvétel:
-Hero / nyitó rész
+Nyitó rész:
+háttérelemek
+profilkép
+domainnév
+főcím
+rövid bemutatkozó szöveg
+```html
+<h1 id="heroName"></h1>
+```
+```html
+<img src="YOUR_IMAGE.jpg" alt="Gina Rubik">
+```
 Navigáció
 Rólam szekció
 Hobbik
@@ -10,20 +21,6 @@ Heti program
 Kedvenc linkek
 Kapcsolat
 Lábléc
-
-A nyitó rész tartalmazza:
-háttér elemeket
-profilképet
-domain nevet
-főcímet
-rövid bemutatkozó szöveget
-
-```html
-<h1 id="heroName"></h1>
-```
-```html
-<img src="YOUR_IMAGE.jpg" alt="Gina Rubik">
-```
 
 A navigációs menü anchor linkeket használ.
 
