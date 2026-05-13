@@ -1,7 +1,7 @@
 HTML Leírás
 
-A személyes portfólió weboldalam HTML szerkezete.
-A weboldal célja Gina bemutatása, hobbijainak és heti programjának megjelenítése, valamint kapcsolatfelvételi lehetőség:
+A személyes portfólió woldalam HTML szerkezete.
+A weboldal célja magam bemutatása, hobbijaimnak és heti programjaimnak megjelenítése, valamint kapcsolatfelvétel:
 Hero / nyitó rész
 Navigáció
 Rólam szekció
@@ -12,7 +12,7 @@ Kapcsolat
 Lábléc
 
 A nyitó rész tartalmazza:
- háttér elemeket
+háttér elemeket
 profilképet
 domain nevet
 főcímet
@@ -58,13 +58,7 @@ A hobbi elemek külön blokkokban jelennek meg.
 ```html
 <table>
 ```
-A heti program táblázatos formában jelenik meg.
-
-| Oszlop      | Leírás       |
-| ----------- | ------------ |
-| Nap         | A hét napjai |
-| Tevékenység | Napi program |
-
+A heti program táblázatos formában jelenik meg: oszlop+leírás
 
 ```html
 <section id="linkek">
@@ -80,7 +74,7 @@ A `target="_blank"` új lapon nyitja meg a linket.
 ```html
 <section id="kapcsolat">
 ```
-Az oldal kapcsolatfelvételi formot tartalmaz:
+Oldalam kapcsolatfelvételi formot tartalmaz:
 név, emmail,üzenet és küldés mezőket
 
 ```html
@@ -99,5 +93,6 @@ A képek jelenleg helyőrző fájlnévvel szerepelnek.
 src="YOUR_IMAGE.jpg"
 ```
 Ezt a saját képfájl nevére kell cserélni.
+
 
 
