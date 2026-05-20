@@ -1,10 +1,10 @@
 Ha van kedvetek html oldal házi
 Készíts egy személyes bemutatkozó oldalt, amely tartalmazza:
-oldal címe,
-főcím,
-rövid bemutatkozás,
-kép,
-hobbik listája,
-kedvenc weboldal linkje,
-táblázat a heti programokról,
-kapcsolatfelvételi űrlap.
+1.oldal címe,
+2.főcím,
+3.rövid bemutatkozás,
+4.kép,
+5.hobbik listája,
+6.kedvenc weboldal linkje,
+7.táblázat a heti programokról,
+8.kapcsolatfelvételi űrlap.
