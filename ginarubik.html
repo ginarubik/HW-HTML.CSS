@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  /* 1.követelmény: oldal címe*/
+  <title>ginarubik.com</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --deep-night: #0d0a1a;
+      --midnight: #1a1230;
+      --purple-deep: #2d1b5e;
+      --violet: #6b3fa0;
+      --rose: #c4527a;
+      --coral: #e8855c;
+      --amber: #f0a842;
+      --cream: #f5e6d3;
+      --gold: #d4a843;
+      --fog: rgba(245, 230, 211, 0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep-night);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* 2. követelmény: főcím-UI flexbox layout szekció */
+     */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, #6b3fa055 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 50%, #c4527a33 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 20% 80%, #e8855c22 0%, transparent 60%),
+        linear-gradient(180deg, #0d0a1a 0%, #1a1230 40%, #2d1b5e 70%, #1a1230 100%);
+      z-index: 0;
+    }
+
+    /* Lebegő csillagok *//
+    .stars {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 50%;
+      animation: twinkle var(--dur) ease-in-out infinite var(--delay);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    /* 4. követelmény: kép */
+    .hero-image-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.18;
+      filter: saturate(1.4) contrast(1.1);
+      mix-blend-mode: luminosity;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      animation: fadeUp 1.4s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .site-domain {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0.7;
+    }
+
+    .hero-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .hero-name .letter {
+      display: inline-block;
+      letter-spacing: 0.12em;
+      background: linear-gradient(135deg, var(--cream) 0%, var(--gold) 40%, var(--rose) 80%, var(--amber) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0;
+      transform: translateY(60px) rotateX(90deg);
+      animation: letterDrop 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .hero-name .word-space { display: inline-block; width: 0.45em; }
+    @keyframes letterDrop {
+      0%   { opacity: 0; transform: translateY(60px) rotateX(90deg) scale(0.8); filter: blur(8px); }
+      60%  { opacity: 1; filter: blur(0); }
+      80%  { transform: translateY(-8px) rotateX(0deg) scale(1.06); }
+      100% { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); filter: blur(0); }
+    }
+    .hero-name .letter.shimmer {
+      background: linear-gradient(270deg, var(--cream), var(--gold), var(--rose), var(--amber), var(--gold), var(--cream));
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmerFlow 3.5s ease infinite;
+    }
+    @keyframes shimmerFlow {
+      0%, 100% { background-position: 0% 50%; }
+      50%       { background-position: 100% 50%; }
+    }
+
+    .hero-divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: var(--cream);
+      opacity: 0.75;
+      letter-spacing: 0.15em;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.5;
+    }
+    .scroll-hint span {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      transform: rotate(45deg);
+      animation: bounce 1.5s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(6px); }
+    }
+
+    /* Navigáció*/
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 10, 26, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212, 168, 67, 0.15);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+    }
+    nav a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.3s, color 0.3s;
+    }
+    nav a:hover { opacity: 1; color: var(--gold); }
+
+    /* Szekciók */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-style: italic;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--cream), var(--rose));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .divider-line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin-bottom: 2.5rem;
+    }
+
+    /* 3. követelmény: rövid bemutatkozás-Rólam */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+    .about-image::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border: 1px solid rgba(212, 168, 67, 0.3);
+      z-index: 0;
+    }
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: -24px;
+      border: 1px solid rgba(196, 82, 122, 0.15);
+      z-index: 0;
+    }
+    .about-image img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      position: relative;
+      z-index: 1;
+      filter: saturate(0.85) contrast(1.05);
+    }
+
+    .about-text p {
+      font-size: 1.2rem;
+      line-height: 2;
+      opacity: 0.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      line-height: 1.7;
+      color: var(--rose);
+      opacity: 0.9;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--gold);
+    }
+
+    /* 5.követelmény: Hobbijaim */
+    .hobbies-section {
+      background: linear-gradient(135deg, rgba(45, 27, 94, 0.3), rgba(196, 82, 122, 0.1));
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hobbies-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .hobby-card {
+      padding: 2rem 1.5rem;
+      border: 1px solid rgba(212, 168, 67, 0.15);
+      text-align: center;
+      transition: all 0.4s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .hobby-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(212, 168, 67, 0.05), rgba(196, 82, 122, 0.05));
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .hobby-card:hover::before { opacity: 1; }
+    .hobby-card:hover { border-color: rgba(212, 168, 67, 0.4); transform: translateY(-4px); }
+
+    .hobby-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .hobby-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0.8;
+    }
+
+    /* 7.követelmény: Táblázat heti programokról*/
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+    .schedule-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 1rem 1.5rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(212, 168, 67, 0.3);
+      font-weight: 600;
+    }
+    .schedule-table td {
+      padding: 1.1rem 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      border-bottom: 1px solid rgba(245, 230, 211, 0.05);
+      vertical-align: top;
+    }
+    .schedule-table tr:hover td {
+      background: rgba(212, 168, 67, 0.04);
+    }
+    .day-cell {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--rose);
+      font-size: 1.1rem;
+      white-space: nowrap;
+      width: 160px;
+    }
+    .activity-cell {
+      opacity: 0.8;
+    }
+    .activity-tag {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.2em 0.7em;
+      border: 1px solid rgba(212, 168, 67, 0.3);
+      color: var(--gold);
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* 6.követelmény: Kedvenc weboldal linkje */
+    .fav-link-section {
+      text-align: center;
+    }
+    .fav-link-wrap {
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    .fav-link {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      padding: 1.2rem 3rem;
+      border: 1px solid rgba(212, 168, 67, 0.4);
+      position: relative;
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+    .fav-link::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(212,168,67,0.1), rgba(196,82,122,0.1));
+      transform: translateX(-100%);
+      transition: transform 0.4s ease;
+    }
+    .fav-link:hover::before { transform: translateX(0); }
+    .fav-link:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* 8.követelmény: Kapcsolatfelvételi űrlap */
+    .contact-section {
+      background: linear-gradient(135deg, rgba(13, 10, 26, 0.8), rgba(45, 27, 94, 0.4));
+      border-top: 1px solid rgba(212, 168, 67, 0.15);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-copy p {
+      font-size: 1.2rem;
+      line-height: 2;
+      opacity: 0.75;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(245, 230, 211, 0.2);
+      padding: 0.75rem 0;
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s;
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-bottom-color: var(--gold);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(245, 230, 211, 0.3);
+      font-style: italic;
+    }
+
+    .submit-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--deep-night);
+      background: linear-gradient(135deg, var(--gold), var(--amber));
+      border: none;
+      padding: 1.1rem 2.5rem;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      align-self: flex-start;
+      position: relative;
+      overflow: hidden;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(212, 168, 67, 0.4);
+    }
+
+    /* Lábjegyzet */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(212, 168, 67, 0.1);
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      opacity: 0.35;
+    }
+
+    /* Reszponzivitás */
+    @media (max-width: 700px) {
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      nav { gap: 1.5rem; flex-wrap: wrap; }
+      section { padding: 4rem 1.5rem; }
+    }
+
+    /* Felvillanó animációk */
+    .appear {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .appear.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero osztály-->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="stars" id="stars"></div>
+  <div class="hero-image-wrap">
+    <img src="/mnt/user-data/uploads/689833351_1239545124673320_4516822812002606114_n.jpg" alt="Gina Rubik">
+  </div>
+  <div class="hero-content">
+    <div class="site-domain">ginarubik.com</div>
+    <h1 class="hero-name" id="heroName"></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">Fullstack tanuló · ProgMasters</p>
+  </div>
+  <div class="scroll-hint">
+    <span>Fedezd fel</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</div>
+
+<!-- Navigáció-->
+<nav>
+  <a href="#rolam">Rólam</a>
+  <a href="#hobbik">Hobbik</a>
+  <a href="#program">Program</a>
+  <a href="#linkek">Linkek</a>
+  <a href="#kapcsolat">Kapcsolat</a>
+</nav>
+
+<!-- 2.követelmény: Rövid bemutatkozás -->
+<section id="rolam">
+  <div class="appear">
+    <div class="section-label">Bemutatkozás</div>
+    <h2 class="section-title">Rólam</h2>
+    <div class="divider-line"></div>
+  </div>
+  <div class="about-grid appear">
+    <div class="about-image">
+      <img src="/mnt/user-data/uploads/689833351_1239545124673320_4516822812002606114_n.jpg" alt="Gina Rubik">
+    </div>
+    <div class="about-text">
+      <p>Gina vagyok — fullstack fejlesztő jelölt a <strong>ProgMasters</strong> képzésén. Az álmok és a kód között élek: napközben programokat írok, éjjel elképzelem, mivé válhatok még.</p>
+      <p>Tanulok, növekszem, és minden egyes sorban egy új lehetőséget látok. A webfejlesztés számomra nem csupán szakma — hanem alkotás és szabadság.</p>
+      <blockquote class="about-quote">
+        "I dream. I heal. I grow.<br>I choose me.<br>I'm still becoming."
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- Hobbijaim -->
+<section id="hobbik" class="hobbies-section">
+  <div class="appear">
+    <div class="section-label">Szenvedélyek</div>
+    <h2 class="section-title">Hobbik</h2>
+    <div class="divider-line"></div>
+  </div>
+  <div class="hobbies-grid appear">
+    <div class="hobby-card">
+      <span class="hobby-icon">✂️</span>
+      <div class="hobby-name">Divattervezés</div>
+    </div>
+    <div class="hobby-card">
+      <span class="hobby-icon">🎵</span>
+      <div class="hobby-name">Zene</div>
+    </div>
+    <div class="hobby-card">
+      <span class="hobby-icon">💃</span>
+      <div class="hobby-name">Tánc</div>
+    </div>
+    <div class="hobby-card">
+      <span class="hobby-icon">🎬</span>
+      <div class="hobby-name">Film</div>
+    </div>
+    <div class="hobby-card">
+      <span class="hobby-icon">🎨</span>
+      <div class="hobby-name">Képzőművészet</div>
+    </div>
+    <div class="hobby-card">
+      <span class="hobby-icon">🧘</span>
+      <div class="hobby-name">Jóga</div>
+    </div>
+    <div class="hobby-card">
+      <span class="hobby-icon">✈️</span>
+      <div class="hobby-name">Utazás</div>
+    </div>
+    <div class="hobby-card">
+      <span class="hobby-icon">📚</span>
+      <div class="hobby-name">Irodalom</div>
+    </div>
+  </div>
+</section>
+
+<!-- Heti Időbeosztásom -->
+<section id="program">
+  <div class="appear">
+    <div class="section-label">Heti ritmus</div>
+    <h2 class="section-title">Heti Program</h2>
+    <div class="divider-line"></div>
+  </div>
+  <div class="appear">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Nap</th>
+          <th>Tevékenység</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="day-cell">Hétfő</td>
+          <td class="activity-cell">ProgMasters óra és gyakorlás <span class="activity-tag">Kód</span></td>
+        </tr>
+        <tr>
+          <td class="day-cell">Kedd</td>
+          <td class="activity-cell">Angoltanítvány és tolmácsolás <span class="activity-tag">Nyelv</span></td>
+        </tr>
+        <tr>
+          <td class="day-cell">Szerda</td>
+          <td class="activity-cell">ProgMasters óra és kódolás <span class="activity-tag">Kód</span></td>
+        </tr>
+        <tr>
+          <td class="day-cell">Csütörtök</td>
+          <td class="activity-cell">Jóga vagy városi program <span class="activity-tag">Feltöltődés</span></td>
+        </tr>
+        <tr>
+          <td class="day-cell">Péntek</td>
+          <td class="activity-cell">Úszás vagy kirándulás <span class="activity-tag">Mozgás</span></td>
+        </tr>
+        <tr>
+          <td class="day-cell">Szombat</td>
+          <td class="activity-cell">Fullstack vizsga vagy divatfotózás <span class="activity-tag">Vizsgaidő / Kreativitás</span></td>
+        </tr>
+        <tr>
+          <td class="day-cell">Vasárnap</td>
+          <td class="activity-cell">Templom, főzés, házimunkák <span class="activity-tag">Megújulás</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Kedvenc weboldal link -->
+<section id="linkek" class="fav-link-section">
+  <div class="appear">
+    <div class="section-label">Kedvenc oldal</div>
+    <h2 class="section-title">Amit szeretek olvasni</h2>
+    <div class="divider-line" style="margin: 0 auto 2rem;"></div>
+    <p style="font-size:1.15rem; opacity:0.7; max-width:500px; margin:0 auto 2rem; line-height:1.9;">
+      A Reddit az én digitális otthonom — inspiráció, közösség és végtelen kíváncsiság egy helyen.
+    </p>
+    <div class="fav-link-wrap">
+      <a href="https://www.reddit.com" target="_blank" class="fav-link">
+        ↗ &nbsp; reddit.com
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 8.követelmény: Kapcsolati űrlap -->
+<section id="kapcsolat" class="contact-section" style="max-width:100%; padding:0;">
+  <div style="max-width:900px; margin:0 auto; padding:6rem 2rem;">
+    <div class="appear">
+      <div class="section-label">Írj nekem</div>
+      <h2 class="section-title">Kapcsolat</h2>
+      <div class="divider-line"></div>
+    </div>
+    <div class="contact-grid appear">
+      <div class="contact-copy">
+        <p>Legyen szó együttműködésről, tanulásról, vagy csak egy kedves üzenetről — szívesen hallok rólad.</p>
+        <br>
+        <p style="font-style:italic; color: var(--gold); opacity:0.8;">
+          "My Life. My Story."
+        </p>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label>Neved</label>
+          <input type="text" placeholder="Mi a neved?" required>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="email@cím.hu" required>
+        </div>
+        <div class="form-group">
+          <label>Üzeneted</label>
+          <textarea rows="4" placeholder="Írd ide..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Küldés →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Lábjegyzet-->
+<footer>
+  <p>© 2026 ginarubik.com &nbsp;·&nbsp; ♡</p>
+</footer>
+
+<script>
+  // Animálja  a főcímet betűnként
+  (function() {
+    const title = "GINA RUBIK";
+    const container = document.getElementById('heroName');
+    const baseDelay = 300; // ms after page load
+    const letterDelay = 200;
+    let idx = 0;
+    title.split('').forEach((char, i) => {
+      if (char === ' ') {
+        const sp = document.createElement('span');
+        sp.className = 'word-space';
+        container.appendChild(sp);
+      } else {
+        const span = document.createElement('span');
+        span.className = 'letter';
+        span.textContent = char;
+        const delay = baseDelay + idx * letterDelay;
+        span.style.animationDelay = delay + 'ms';
+        // Switch to shimmer after drop animation finishes
+        setTimeout(() => span.classList.add('shimmer'), delay + 700);
+        container.appendChild(span);
+        idx++;
+      }
+    });
+  })();
+
+  // Csillagok generálása
+  const starsContainer = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.setProperty('--dur', (2 + Math.random() * 4) + 's');
+    star.style.setProperty('--delay', (Math.random() * 4) + 's');
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.width = star.style.height = (Math.random() > 0.7 ? 3 : 2) + 'px';
+    starsContainer.appendChild(star);
+  }
+
+  // Scroll megjelenése
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.appear').forEach(el => observer.observe(el));
+
+  // Kapcsolatfelvételi űrlap
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.submit-btn');
+    btn.textContent = 'Elküldve ✓';
+    btn.style.background = 'linear-gradient(135deg, #6b3fa0, #c4527a)';
+    btn.style.color = '#f5e6d3';
+    e.target.reset();
+    setTimeout(() => {
+      btn.textContent = 'Küldés →';
+      btn.style.background = 'linear-gradient(135deg, #d4a843, #f0a842)';
+      btn.style.color = '#0d0a1a';
+    }, 3000);
+  }
+</script>
+</body>
+</html>
