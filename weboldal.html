@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gina Rubik személyes oldala">
+    <title>ginarubik.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="weboldal.css">
+</head>
+<body>
+
+<!-- Hős osztály -->
+<div class="hero">
+    <div class="hero-bg"></div>
+    <div class="stars" id="stars"></div>
+    <div class="hero-image-wrap">
+        <img src="gina.jpg" alt="Gina Rubik portrait">
+    </div>
+    <div class="hero-content">
+        <div class="site-domain">ginarubik.com</div>
+
+        <!-- Zene lejátszó -->
+        <div class="audio-player" id="audioPlayer">
+            <button class="ap-btn" id="apPlayBtn" aria-label="Play/Pause">
+                <svg id="apIconPlay" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg>
+                <svg id="apIconPause" viewBox="0 0 24 24" fill="currentColor" width="22" height="22" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="ap-info">
+                <span class="ap-title">Maangalyam</span>
+                <span class="ap-sub">Bangalore Days · 2014</span>
+            </div>
+            <div class="ap-timeline">
+                <div class="ap-bar" id="apBar">
+                    <div class="ap-fill" id="apFill"></div>
+                    <div class="ap-thumb" id="apThumb"></div>
+                </div>
+                <div class="ap-times">
+                    <span id="apCur">0:00</span>
+                    <span id="apDur">–:––</span>
+                </div>
+            </div>
+            <div class="ap-vol">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" style="opacity:.6;flex-shrink:0"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                <input class="ap-vol-range" id="apVol" type="range" min="0" max="1" step="0.02" value="0.8" aria-label="Volume">
+            </div>
+            <audio id="apAudio" loop src="Bangalore_Days_2014_-_Maangalyam_(mp3.pm).mp3"></audio>
+        </div>
+
+        <h1 class="hero-name" id="heroName"></h1>
+        <div class="hero-divider"></div>
+        <p class="hero-tagline">Fullstack tanuló · ProgMasters</p>
+    </div>
+</div>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+    <a href="#rolam">Rólam</a>
+    <a href="#hobbik">Hobbijaim</a>
+    <a href="#program">Heti Programom</a>
+    <a href="#link">Kedvenc Link</a>
+    <a href="#kapcsolat">Kapcsolat</a>
+</nav>
+
+<!-- Rólam-->
+<section id="rolam">
+    <div class="appear">
+        <div class="section-label">Bemutatkozás</div>
+        <h2 class="section-title">Rólam</h2>
+        <div class="divider-line"></div>
+    </div>
+    <div class="about-grid appear">
+        <div class="about-image">
+            <img src="gina.jpg" alt="Portrait of Gina Rubik">
+        </div>
+        <div class="about-text">
+            <p>Gina vagyok — fullstack fejlesztő jelölt a <strong>ProgMasters</strong> képzésén.</p>
+            <p>Tanulok, kódokat írok, és minden sorban új lehetőséget látok.</p>
+            <blockquote class="about-quote">
+                "I dream. I heal. I grow.<br>
+                I choose me.<br>
+                I'm still becoming."
+            </blockquote>
+        </div>
+    </div>
+</section>
+
+<!-- Hobbijaim -->
+<section id="hobbik">
+    <div class="appear">
+        <div class="section-label">Szenvedélyek</div>
+        <h2 class="section-title">Hobbijaim</h2>
+        <div class="divider-line"></div>
+    </div>
+    <div class="hobbies-grid appear">
+        <div class="hobby-card"><span class="hobby-icon">✂️</span><div class="hobby-name">Divattervezés</div></div>
+        <div class="hobby-card"><span class="hobby-icon">🎵</span><div class="hobby-name">Zene</div></div>
+        <div class="hobby-card"><span class="hobby-icon">💃</span><div class="hobby-name">Tánc</div></div>
+        <div class="hobby-card"><span class="hobby-icon">🎬</span><div class="hobby-name">Film</div></div>
+        <div class="hobby-card"><span class="hobby-icon">🎨</span><div class="hobby-name">Képzőművészet</div></div>
+        <div class="hobby-card"><span class="hobby-icon">🧘</span><div class="hobby-name">Jóga</div></div>
+        <div class="hobby-card"><span class="hobby-icon">✈</span><div class="hobby-name">Utazás</div></div>
+        <div class="hobby-card"><span class="hobby-icon">👩‍💻</span><div class="hobby-name">Programozás</div></div>
+    </div>
+</section>
+
+<!-- Heti Programom -->
+<section id="program">
+    <div class="appear">
+        <div class="section-label">Heti ritmus</div>
+        <h2 class="section-title">Heti Programom</h2>
+        <div class="divider-line"></div>
+    </div>
+    <table class="schedule-table appear">
+        <thead>
+        <tr><th>Nap</th><th>Tevékenység</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class="day-cell">Hétfő</td><td>ProgMasters óra <span class="activity-tag">Fullstack</span></td></tr>
+        <tr><td class="day-cell">Kedd</td><td>Angoltanítás <span class="activity-tag">Nyelv</span></td></tr>
+        <tr><td class="day-cell">Szerda</td><td>Gyakorlás <span class="activity-tag">Kód</span></td></tr>
+        <tr><td class="day-cell">Csütörtök</td><td>Divattervezés <span class="activity-tag">Design</span></td></tr>
+        <tr><td class="day-cell">Péntek</td><td>Sportolás <span class="activity-tag">Konditerem</span></td></tr>
+        <tr><td class="day-cell">Szombat</td><td>Progmasters óra <span class="activity-tag">Fullstack</span></td></tr>
+        <tr><td class="day-cell">Vasárnap</td><td>Családlátogatás <span class="activity-tag">Szabadidő</span></td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Linkek -->
+<section id="linkek" style="text-align:center;">
+    <div class="appear">
+        <div class="section-label">Kedvenc oldal</div>
+        <h2 class="section-title">Amit szeretek böngészni</h2>
+        <div class="divider-line" style="margin:auto auto 2rem"></div>
+        <a href="https://www.reddit.com" target="_blank" rel="noopener noreferrer" class="fav-link">↗ reddit.com</a>
+    </div>
+</section>
+
+<!-- Kapcsolat -->
+<section id="kapcsolat">
+    <div class="appear">
+        <div class="section-label">Írj nekem</div>
+        <h2 class="section-title">Kapcsolat</h2>
+        <div class="divider-line"></div>
+    </div>
+    <div class="contact-grid appear">
+        <div>
+            <p style="line-height:2; opacity:0.8;">Szívesen hallok rólad.</p>
+        </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label>Neved</label>
+                <input type="text" name="name" autocomplete="name" required>
+            </div>
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+                <label>Üzenet</label>
+                <textarea name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Küldés →</button>
+        </form>
+    </div>
+</section>
+
+<!-- Lábjegyzet -->
+<footer>
+    © 2026 ginarubik.com · fotó: A♡el zene: Malayalam film dal ♡
+</footer>
+
+<button id="backToTop" aria-label="Back to top">↑</button>
+
+<!-- Betölti a JavaScriptet-->
+<script src="weboldal.js"></script>
+</body>
+</html>
